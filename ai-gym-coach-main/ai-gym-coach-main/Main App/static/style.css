@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+/* =========================================================
+   GLOBAL THEME - SPOTTER
+========================================================= */
+
+.stApp {
+  background-color: #121212;
+  color: #e5e5e5;
+}
+
+[data-testid="stSidebar"] {
+  background-color: #1a1a1a;
+  border-right: 1px solid #2a2a2a;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.block-container,
+.block-container * {
+  font-family: 'Inter', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.block-container {
+  padding: 40px 48px !important;
+  max-width: 1200px !important;
+}
+
+/* =========================================================
+   BUTTONS (Primary & Secondary)
+========================================================= */
+
+/* Primary buttons (Electric Lime) */
+button,
+.stButton button,
+.stDownloadButton button,
+[data-testid="stFormSubmitButton"] button {
+  background-color: #d2f000 !important;
+  color: #1a1e00 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  padding: 12px 24px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+button:hover,
+.stButton button:hover,
+[data-testid="stFormSubmitButton"] button:hover {
+  background-color: #e2fa23 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(210, 240, 0, 0.2);
+}
+
+button:active,
+.stButton button:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button overrides if needed */
+[data-testid="stBaseButton-secondary"] {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  border: 1px solid #3a3a3a !important;
+}
+
+[data-testid="stBaseButton-secondary"]:hover {
+  background-color: #3a3a3a !important;
+  border-color: #d2f000 !important;
+}
+
+/* =========================================================
+   INPUTS & TEXT ELEMENTS
+========================================================= */
+
+input,
+textarea,
+[data-testid="stSelectbox"] > div > div,
+[data-baseweb="select"] > div,
+[data-baseweb="popover"] ul,
+[data-baseweb="menu"] {
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  color: #fff !important;
+}
+
+input:focus,
+[data-baseweb="select"] > div:focus-within {
+  border-color: #d2f000 !important;
+  box-shadow: 0 0 0 1px #d2f000 !important;
+}
+
+/* =========================================================
+   METRICS (Polished Stat Cards)
+========================================================= */
+
+[data-testid="stMetric"] {
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.2s ease;
+}
+
+[data-testid="stMetric"]:hover {
+  border-color: #444;
+}
+
+[data-testid="stMetric"] div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+[data-testid="stMetricValue"] {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  color: #d2f000 !important; /* Accent color for the value */
+}
+
+[data-testid="stMetricLabel"] {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a3a3a3 !important; 
+}
+
+/* =========================================================
+   CONTAINERS & DIVIDERS
+========================================================= */
+
+.stDivider {
+  border-bottom-color: #2a2a2a !important;
+}
+
+[data-testid="stForm"] {
+  margin-top: 32px !important;
+  padding: 32px !important;
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4) !important;
+}
+
+/* Make camera and coach box feel cohesive */
+[data-testid="stVerticalBlock"] > [style*="flex-direction: column;"] > [data-testid="stVerticalBlock"] {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* =========================================================
+   DATAFRAME / TABLE STYLING
+========================================================= */
+
+.stDataFrame,
+.stTable {
+  border: 1px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.stDataFrame [data-testid="stTable"] th,
+.stTable th {
+  background-color: #1e1e1e !important;
+  color: #999 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  border-bottom: 1px solid #2a2a2a !important;
+}
+
+.stDataFrame [data-testid="stTable"] td,
+.stTable td {
+  background-color: #121212 !important;
+  color: #e5e5e5 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  border-bottom: 1px solid #1a1a1a !important;
+}
+
+/* =========================================================
+   ALERTS / NOTIFICATIONS
+========================================================= */
+
+[data-testid="stAlert"] {
+  border-radius: 8px !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+/* Error/Alert Form Alert style */
+.stAlert-error {
+  background-color: rgba(211, 0, 23, 0.1) !important;
+  border-color: #d30017 !important;
+  color: #ffb4ab !important;
+}
+
+.stAlert-success {
+  background-color: rgba(210, 240, 0, 0.1) !important;
+  border-color: #d2f000 !important;
+  color: #d2f000 !important;
+}

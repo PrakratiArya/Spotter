@@ -17,13 +17,24 @@ from skills.jumping_jacks import JumpingJacksDetector
 from services.config.workout_config import POSE_CONNECTIONS
 
 
+
 class VideoProcessorClass(VideoProcessorBase):
     def __init__(self):
         self._lock = threading.Lock()
         self._latest_metrics = None
         self._exercise_type = "Squats"
 
-        model_path = os.path.join(os.getcwd(), "ml_models", "pose_landmarker_full.task")
+        import urllib.request
+
+        model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "ml_models")
+        model_dir = os.path.abspath(model_dir)
+        os.makedirs(model_dir, exist_ok=True)
+        model_path = os.path.join(model_dir, "pose_landmarker_full.task")
+
+        if not os.path.exists(model_path):
+            model_url = "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task"
+            urllib.request.urlretrieve(model_url, model_path)
+
         base_option = python.BaseOptions(model_asset_path=model_path)
 
         options = vision.PoseLandmarkerOptions(

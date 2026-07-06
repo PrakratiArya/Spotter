@@ -4,7 +4,7 @@
 
 Real-time pose detection with proactive AI safety spotting — built with a multi-agent architecture (ADK), Google Gemini, and MCP.
 
-**[Live App](#)** · **[Demo Video](#)** · **[Kaggle Writeup](#)**
+**[Live App](https://spotter-pqqswzbavkfppesnuxvvuk.streamlit.app/)** · **[Demo Video](#)** ·
 
 ---
 

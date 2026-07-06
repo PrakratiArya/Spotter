@@ -7,7 +7,8 @@ _DB_PATH = str(Path(__file__).parent.parent.parent / "data.db")
 
 @st.cache_resource
 def _get_connection() -> sqlite3.Connection:
-    conn = sqlite3.connect(_DB_PATH, check_same_thread=False)
+    conn = sqlite3.connect(_DB_PATH, check_same_thread=False, timeout=30)
+    conn.execute("PRAGMA journal_mode=WAL;")
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -50,13 +51,14 @@ def get_user(username: str) -> sqlite3.Row:
 
 def create_user(username: str) -> sqlite3.Row:
     conn = _get_connection()
-    
+
     with conn:
         conn.execute(
-            "INSERT INTO users (username) VALUES (?)", (username,)
+            "INSERT INTO users (username) VALUES (?) ON CONFLICT(username) DO NOTHING",
+            (username,)
         )
 
-    return get_user(username) 
+    return get_user(username)
 
 
 def get_or_create_user(username: str) -> sqlite3.Row:
@@ -64,7 +66,7 @@ def get_or_create_user(username: str) -> sqlite3.Row:
 
     if user is None:
         user = create_user(username)
-    
+
     return user
 
 
@@ -74,7 +76,7 @@ def add_exercise(user_id, exercise_name, reps, sets, time):
     with conn:
         existing = conn.execute("""
             SELECT * FROM exercises 
-            WHERE user_id = ? AND exercise_name = ? AND Date('created_at') = Date('now')
+            WHERE user_id = ? AND exercise_name = ? AND Date(created_at) = Date('now')
         """, (user_id, exercise_name)).fetchone()
 
         if existing:
